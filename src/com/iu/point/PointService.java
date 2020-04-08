@@ -25,4 +25,9 @@ public class PointService {
 		return pointDAO.pointDelete(num);
 	}
 
+	// 4.Add / Insert
+	public int pointAdd(PointDTO pointDTO) throws Exception {
+		return pointDAO.pointAdd(pointDTO);
+	}
+
 }

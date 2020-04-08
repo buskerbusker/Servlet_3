@@ -59,15 +59,36 @@ public class PointController extends HttpServlet {
 
 			} else if (command.equals("/pointAdd")) {
 
-				if (method.equals("post")) {
+				if (method.equals("POST")) {
+
+					PointDTO pointDTO = new PointDTO();
+					String name = request.getParameter("name");
+					int num = Integer.parseInt(request.getParameter("num"));
+					int kor = Integer.parseInt(request.getParameter("kor"));
+					int eng = Integer.parseInt(request.getParameter("eng"));
+					int math = Integer.parseInt(request.getParameter("math"));
+					int total = Integer.parseInt(request.getParameter("total"));
+					double avg = Integer.parseInt(request.getParameter("avg"));
+					pointDTO.setName(name);
+					pointDTO.setNum(num);
+					pointDTO.setKor(kor);
+					pointDTO.setEng(eng);
+					pointDTO.setMath(math);
+					pointDTO.setTotal(total);
+					pointDTO.setAvg(avg);
+
+					check = false;
+					int result = pointService.pointAdd(pointDTO);
+					path = "./pointList";
 
 				} else {
+
 					path = "../WEB-INF/views/point/pointAdd.jsp";
 				}
 
 			} else if (command.equals("/pointMod")) {
 
-				if (method.equals("post")) {
+				if (method.equals("POST")) {
 
 				} else {
 					path = "../WEB-INF/views/point/pointMod.jsp";
@@ -84,7 +105,7 @@ public class PointController extends HttpServlet {
 				check = false;
 				int num = Integer.parseInt(request.getParameter("num"));
 				int result = pointService.pointDelete(num);
-				path = "./pointList.jsp";
+				path = "./pointList";
 
 			} else {
 				System.out.println("ETC");
