@@ -1,6 +1,8 @@
 package com.iu.point;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,19 +40,37 @@ public class PointController extends HttpServlet {
 		String method = request.getMethod();
 		// forward(true) redirect(false) 선택
 		boolean check = true;
-		// path를 담을 변수
+		// url을 담을 변수
 		String path = "";
 
 		if (command.equals("/pointList")) {
-			System.out.println("list");
+			check = true;
+			path = "../WEB-INF/views/point/pointList.jsp";
 		} else if (command.equals("/pointAdd")) {
-			System.out.println("Add");
+			if (method.equals("post")) {
+
+			} else {
+				path = "../WEB-INF/views/point/pointAdd.jsp";
+			}
 		} else if (command.equals("/pointMod")) {
-			System.out.println("Mod");
+			if (method.equals("post")) {
+
+			} else {
+				path = "../WEB-INF/views/point/pointMod.jsp";
+			}
 		} else if (command.equals("/pointSelect")) {
-			System.out.println("Select");
+			path = "../WEB-INF/views/point/pointSelect.jsp";
 		} else if (command.equals("/pointDelete")) {
-			System.out.println("Delete");
+			path = "../WEB-INF/views/point/pointDelete.jsp";
+		} else {
+			System.out.println("ETC");
+		}
+
+		if (check) {
+			RequestDispatcher view = request.getRequestDispatcher(path);
+			view.forward(request, response);
+		} else {
+			response.sendRedirect(path);
 		}
 
 	}
