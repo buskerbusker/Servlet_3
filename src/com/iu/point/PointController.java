@@ -1,6 +1,7 @@
 package com.iu.point;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,12 +16,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/PointController")
 public class PointController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private PointService pointService;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public PointController() {
 		super();
+		this.pointService = new PointService();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -42,28 +45,52 @@ public class PointController extends HttpServlet {
 		boolean check = true;
 		// url을 담을 변수
 		String path = "";
+		try {
+			if (command.equals("/pointList")) {
 
-		if (command.equals("/pointList")) {
-			check = true;
-			path = "../WEB-INF/views/point/pointList.jsp";
-		} else if (command.equals("/pointAdd")) {
-			if (method.equals("post")) {
+				try {
+					ArrayList<PointDTO> ar = pointService.pointList();
+					request.setAttribute("list", ar);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				path = "../WEB-INF/views/point/pointList.jsp";
+
+			} else if (command.equals("/pointAdd")) {
+
+				if (method.equals("post")) {
+
+				} else {
+					path = "../WEB-INF/views/point/pointAdd.jsp";
+				}
+
+			} else if (command.equals("/pointMod")) {
+
+				if (method.equals("post")) {
+
+				} else {
+					path = "../WEB-INF/views/point/pointMod.jsp";
+				}
+
+			} else if (command.equals("/pointSelect")) {
+
+				int num = Integer.parseInt(request.getParameter("num"));
+				PointDTO pointDTO = pointService.pointSelect(num);
+				request.setAttribute("dto", pointDTO);
+				path = "../WEB-INF/views/point/pointSelect.jsp";
+
+			} else if (command.equals("/pointDelete")) {
+				check = false;
+				int num = Integer.parseInt(request.getParameter("num"));
+				int result = pointService.pointDelete(num);
+				path = "./pointList.jsp";
 
 			} else {
-				path = "../WEB-INF/views/point/pointAdd.jsp";
+				System.out.println("ETC");
 			}
-		} else if (command.equals("/pointMod")) {
-			if (method.equals("post")) {
-
-			} else {
-				path = "../WEB-INF/views/point/pointMod.jsp";
-			}
-		} else if (command.equals("/pointSelect")) {
-			path = "../WEB-INF/views/point/pointSelect.jsp";
-		} else if (command.equals("/pointDelete")) {
-			path = "../WEB-INF/views/point/pointDelete.jsp";
-		} else {
-			System.out.println("ETC");
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 
 		if (check) {
