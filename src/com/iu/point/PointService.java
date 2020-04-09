@@ -30,4 +30,9 @@ public class PointService {
 		return pointDAO.pointAdd(pointDTO);
 	}
 
+	// 5.Update
+	public int pointMod(PointDTO pointDTO) throws Exception {
+		return pointDAO.pointMod(pointDTO);
+	}
+
 }

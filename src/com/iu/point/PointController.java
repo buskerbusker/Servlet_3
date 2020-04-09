@@ -90,7 +90,31 @@ public class PointController extends HttpServlet {
 
 				if (method.equals("POST")) {
 
+					PointDTO pointDTO = new PointDTO();
+					String name = request.getParameter("name");
+					int num = Integer.parseInt(request.getParameter("num"));
+					int kor = Integer.parseInt(request.getParameter("kor"));
+					int eng = Integer.parseInt(request.getParameter("eng"));
+					int math = Integer.parseInt(request.getParameter("math"));
+					int total = Integer.parseInt(request.getParameter("total"));
+					double avg = Integer.parseInt(request.getParameter("avg"));
+					pointDTO.setName(name);
+					pointDTO.setNum(num);
+					pointDTO.setKor(kor);
+					pointDTO.setEng(eng);
+					pointDTO.setMath(math);
+					pointDTO.setTotal(total);
+					pointDTO.setAvg(avg);
+
+					check = false;
+
+					pointService.pointMod(pointDTO);
+					path = "./pointSelect?num=" + pointDTO.getNum();
+
 				} else {
+					int num = Integer.parseInt(request.getParameter("num"));
+					PointDTO pointDTO = pointService.pointSelect(num);
+					request.setAttribute("dto", pointDTO);
 					path = "../WEB-INF/views/point/pointMod.jsp";
 				}
 
