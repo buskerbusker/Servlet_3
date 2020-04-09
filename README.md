@@ -26,3 +26,5 @@
  - /point/pointMod/        / post
  - /point/pointDelete/      /get
  
+ #학원 추가
+ 
