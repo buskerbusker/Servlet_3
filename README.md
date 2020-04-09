@@ -26,3 +26,4 @@
  - /point/pointMod/        / post
  - /point/pointDelete/      /get
  
+ #home add 1
