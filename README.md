@@ -26,3 +26,22 @@
  - /point/pointMod/        / post
  - /point/pointDelete/      /get
  
+ ======================================================
+ 
+ ### Member
+- 회원가입(insert)
+- 로그인(select one)
+- 회원수정(update)
+- 회원탈퇴(delete)
+- 마이페이지(select)
+
+ ## JSP
+ - web-inf/views/member/....
+ - /member/memberJoin memberJoin.jsp / get
+ - /member/memberJoin  / post
+ - /member/memberLogin memberLogin.jsp / get
+ - /member/memberLogin / post
+ - /member/memberPage memberPage.jsp / get
+ - /member/memberUpdate memberUpdate.jsp / get
+ - /member/memberUpdate / get
+ - /member/memberDelete / get
