@@ -104,7 +104,7 @@ public class PointController extends HttpServlet {
 			} else if (command.equals("/pointDelete")) {
 				check = false;
 				int num = Integer.parseInt(request.getParameter("num"));
-				int result = pointService.pointDelete(num);
+				pointService.pointDelete(num);
 				path = "./pointList";
 
 			} else {
