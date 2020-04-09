@@ -93,6 +93,7 @@
 			</div>
 
 			<button type="submit" class="btn btn-default">Submit</button>
+			<input type="submit" value="submit">
 		</form>
 	</div>
 
