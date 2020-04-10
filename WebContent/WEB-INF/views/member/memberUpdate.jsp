@@ -10,48 +10,42 @@
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
-
 	<div class="container">
-		<h2>MemberJoin</h2>
-		<form action="./memberJoin" method="post">
+		<h2>Member Update Form</h2>
+		<form action="./memberUpdate" method="post">
 
 			<div class="form-group">
 				<label for="Id">ID:</label> <input type="text" class="form-control"
-					id="id" placeholder="아이디를 입력하세요" name="id">
-			</div>
-
-			<div class="form-group">
-				<label for="Password">Password:</label> <input type="password"
-					class="form-control" id="password" placeholder="비밀번호를 입력하세요"
-					name="password">
+					id="id" placeholder="아이디를 입력하세요" name="id" value="${member.id}"
+					readonly="readonly">
 			</div>
 
 			<div class="form-group">
 				<label for="Name">Name:</label> <input type="text"
-					class="form-control" id="name" placeholder="이름을 입력하세요" name="name">
+					class="form-control" id="name" placeholder="이름을 입력하세요" name="name"
+					value="${member.name}">
 			</div>
 
 			<div class="form-group">
 				<label for="Age">Age:</label> <input type="text"
-					class="form-control" id="age" placeholder="나이를 입력하세요" name="age">
+					class="form-control" id="age" placeholder="나이를 입력하세요" name="age"
+					value="${member.age}">
 			</div>
 
 			<div class="form-group">
 				<label for="Phone">Phone:</label> <input type="text"
 					class="form-control" id="phone" placeholder="연락처를 입력하세요"
-					name="phone">
+					name="phone" value="${member.phone}">
 			</div>
 
 			<div class="form-group">
 				<label for="Email">Email:</label> <input type="text"
 					class="form-control" id="email" placeholder="이메일을 입력하세요"
-					name="email">
+					name="email" value="${member.email}">
 			</div>
-
-			<button type="submit" class="btn btn-default">Submit</button>
+			<button type="submit" class="btn btn-primary">Update</button>
 		</form>
 	</div>
 
 </body>
-
 </html>

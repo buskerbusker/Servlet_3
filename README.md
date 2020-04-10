@@ -43,5 +43,5 @@
  - /member/memberLogin / post
  - /member/memberPage memberPage.jsp / get
  - /member/memberUpdate memberUpdate.jsp / get
- - /member/memberUpdate / get
+ - /member/memberUpdate / post
  - /member/memberDelete / get
