@@ -11,7 +11,7 @@
 </head>
 <body>
 	<c:import url="./template/header.jsp"></c:import>
-	<h1>Add contents</h1>
+	<h1>메인화면 입니다.</h1>
 
 </body>
 </html>
